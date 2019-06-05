@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="OSLab1-Scheduler:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OSLab1_Scheduler_jar</output-path>
+    <root id="root">
+      <element id="archive" name="OSLab1-Scheduler.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/../META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="OSLab1-Scheduler" />
+      </element>
+    </root>
+  </artifact>
+</component>
