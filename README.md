@@ -8,6 +8,16 @@ UESTC-Operating System Experiment（电子科技大学 操作系统 实验）
 
 **具体实现见源码**
 
+### 测试文件与测试用例
+
+#### 使用
+
+编辑修改批处理文件中的文件名，运行批处理文件（需要本机配置好Java环境）
+
+#### 鸣谢
+
+[同学们提供的测试用例若干](https://github.com/502408764/os-test-shell)
+
 ## 二、虚拟内存综合实验
 
 ### Introduction
