@@ -13,7 +13,7 @@ public class PCB {
         return pcb;
     }
 
-    private Map<String, Process> existProcesses;// 所有存活的进程，包括Running（运行状态）,Blocked（阻塞状态）,Ready（就绪状态）
+    private static Map<String, Process> existProcesses;// 所有存活的进程，包括Running（运行状态）,Blocked（阻塞状态）,Ready（就绪状态）
     private Process currentProcess;// 当前占用CPU的进程
     private AtomicInteger pidGenerator;// pid生成器，用以生成唯一的pid
 
@@ -57,7 +57,7 @@ public class PCB {
     }
 
     // 主要用于判断用户输入的进程名称是否合法，因为name对用户来说是进程唯一标识
-    public boolean exsitName(String name) {
+    public static boolean exsitName(String name) {
         return existProcesses.containsKey(name);
     }
 
@@ -104,12 +104,14 @@ public class PCB {
 
     // 进程切换
     public static void preempt(Process readyProcess, Process currentProcess) {
-        readyQueue.addProcess(currentProcess); // 将当前进程加入就绪队列中
-        currentProcess.setState(Process.State.READY); // 将进程状态置为就绪状态
-        readyQueue.removeProcess(readyProcess); // 从就绪队列取出一个就绪进程
-        pcb.setCurrentProcess(readyProcess);// 将该进程设为当前运行的进程
-        readyProcess.setState(Process.State.RUNNING);// 该进程状态设为运行状态
-        return;
+        if (exsitName(currentProcess.getProcessName())) {
+            readyQueue.addProcess(currentProcess); // 将当前进程加入就绪队列中
+            currentProcess.setState(Process.State.READY); // 将进程状态置为就绪状态
+            readyQueue.removeProcess(readyProcess); // 从就绪队列取出一个就绪进程
+            pcb.setCurrentProcess(readyProcess);// 将该进程设为当前运行的进程
+            readyProcess.setState(Process.State.RUNNING);// 该进程状态设为运行状态
+            return;
+        }
     }
 
     // 时间片轮转（RR），时间片完后切换进程

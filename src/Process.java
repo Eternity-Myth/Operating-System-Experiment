@@ -115,8 +115,8 @@ public class Process {
             pcb.killProcess(this);
             this.setState(State.TERMINATED);
         } else if (this.getState() == State.RUNNING) { // 进程状态为运行状态时直接终止，修改其状态为终止状态
-            this.setState(State.TERMINATED);
             pcb.killProcess(this);
+            this.setState(State.TERMINATED);
         }
         // 清除进程的parent和child指针
         parent.removeChild(this);
