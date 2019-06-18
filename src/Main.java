@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         pcb.createProcess("init", 0); // 创建init进程，优先级设定为0
-        System.out.print("init" + "  ");
+        System.out.print("init" + " ");
         if (args.length != 0) { // 有命令行参数时，从文件读取
             loadFile(args[0]);
         } else { // 无命令行参数时，从键盘录入
@@ -199,7 +199,7 @@ public class Main {
             }
         }
         if (pcb.getCurrentProcess() != null) {
-            System.out.print(pcb.getCurrentProcess().getProcessName() + "  ");
+            System.out.print(pcb.getCurrentProcess().getProcessName() + " ");
         }
     }
 
